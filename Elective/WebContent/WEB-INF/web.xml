@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xmlns="http://java.sun.com/xml/ns/javaee"
+			xmlns:web="http://java.sun.com/xml/ns/javaee"
+			xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+			id="WebApp_ID" version="2.5">
+  <display-name>Elective</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>elective.web.Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/controller</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ControllerProxy</servlet-name>
+    <servlet-class>elective.web.ControllerProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerProxy</servlet-name>
+    <url-pattern>/controllerproxy</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>CommandAccessFilter</filter-name>
+    <filter-class>elective.web.filter.CommandAccessFilter</filter-class>
+    <init-param>
+      <param-name>student</param-name>
+      <param-value>listCourses</param-value>
+    </init-param>
+    <init-param>
+      <param-name>common</param-name>
+      <param-value>logout noCommand</param-value>
+    </init-param>
+    <init-param>
+      <param-name>out-of-control</param-name>
+      <param-value>login</param-value>
+    </init-param>
+  </filter>
+  <description>MySQL</description>
+  <resource-ref>
+    <description>MySQL DB Connection Pool</description>
+    <res-ref-name>jdbc/elective_db</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+</web-app>

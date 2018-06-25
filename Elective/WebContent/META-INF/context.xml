@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+<Context antiJARLocking="true">
+-->
+<!--
+<Context antiResourceLocking="true">
+-->
+<Context>
+	<Resource name="jdbc/elective_db"
+				author="Container"
+				type="javax.sql.DataSource"
+				maxActive="32"
+				maxIdle="12"
+				maxWait="10000"
+				username="root"
+				password="root"
+				driverClassName="com.mysql.jdbc.Driver"
+				url="jdbc:mysql://localhost:3306/elective_db?useSSL=false" 
+				factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"/>
+</Context>

@@ -1,0 +1,52 @@
+
+<%@ page import="elective.db.enumentity.Role" %>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<tr>
+<td id="header">
+
+<c:if test="${not empty user}">
+
+<div id="leftHeader">
+
+	<c:choose>
+
+		<c:when test="${userRole.name == 'admin' }">
+			<a href="controller?command=listOrders">All orders</a> &nbsp;
+		</c:when>
+
+		<c:when test="${userRole.name == 'client'}">
+			<a href="controller?command=listMenu">Menu</a> &nbsp;
+		</c:when>
+	</c:choose>
+
+	<a href="controller?command=viewSettings">Settings</a> &nbsp;
+
+</div>
+
+<div id="rightHeader" >
+
+	<c:out value="${user.firstName} ${user.lastName}"/>
+	
+	<c:if test="${not empty userRole}">
+		<c:out value="(${userRole.name})"/>
+	</c:if>
+
+	<a href="controller?command=logout">
+		Logout
+	</a> 	
+
+</div>
+</c:if>
+
+<c:if test="${empty user and title ne 'Login'}">
+	<div id="rightHeader">
+		<a href="login.jsp">Login</a>
+	</div>
+</c:if>
+
+	</td>
+</tr>
+
